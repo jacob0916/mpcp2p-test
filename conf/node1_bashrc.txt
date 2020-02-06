@@ -1,0 +1,7 @@
+export PATH=$PATH:/usr/local/go/bin
+export GOROOT=/usr/local/go
+export GOPATH=/home/ubuntu/gopath
+alias cdgs='cd ~/src/github.com/wanchain/schnorr-mpc'
+
+alias bg='~/schnorrmpc/bin/schnorrmpc attach ~/schnorrmpc/data/gwan.ipc'
+
