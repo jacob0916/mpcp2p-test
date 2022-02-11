@@ -13,12 +13,11 @@ index=0
 for ip in $(cat ip.txt)
 do 
   echo ${index} ${ip}
-  ssh -o StrictHostKeyChecking=no -i ${pem} ubuntu@${ip} "mkdir -p ~/schnorrmpc/bin && mkdir -p ~/schnorrmpc/data"
+  ssh -o StrictHostKeyChecking=no -i ${pem} ubuntu@${ip} "mkdir -p ~/bin && mkdir -p ~/data/keystore"
 
-  scp -o StrictHostKeyChecking=no -i ${pem} ./conf/nodekeys/n${ids[$index]} ubuntu@${ip}:~/schnorrmpc/data/nodekey
-  scp -o StrictHostKeyChecking=no -i ${pem} ./conf/storemans.json  ubuntu@${ip}:~/schnorrmpc/data/storemans.json
-  scp -o StrictHostKeyChecking=no -i ${pem} ./conf/pwd ubuntu@${ip}:~/schnorrmpc/data/pwd
-  scp -o StrictHostKeyChecking=no -i ${pem} ./run.sh ubuntu@${ip}:~/schnorrmpc/bin/run.sh
+  scp -o StrictHostKeyChecking=no -i ${pem} ./conf/nodekeys/n${ids[$index]} ubuntu@${ip}:~/data/nodekey
+  scp -o StrictHostKeyChecking=no -i ${pem} ./conf/pwd ubuntu@${ip}:~/data/pw.txt
+  scp -o StrictHostKeyChecking=no -i ${pem} ./run.sh ubuntu@${ip}:~/bin/run.sh
 
   ((index++))
 done

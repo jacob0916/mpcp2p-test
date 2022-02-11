@@ -1,6 +1,7 @@
 #!/bin/bash
-
-nohup ~/schnorr/bin/schnorrmpc --verbosity 4 --port 27718 --storeman --datadir ~/schnorr/data --ipcpath ~/schnorr/data/gwan.ipc --maxpeers 100 --nodekey ~/schnorr/data/nodekey --threshold 17 --totalnodes 21 --password ~/schnorr/data/pwd
+#$1 ipaddr
+#$2 lockAddress
+nohup ~/bin/geth --http --http.port 8545 --http.addr $1 --port 17717  --nodekey=~/data/nodekey --syncmode=full --pluto --datadir=~/data  --password=~/data/pw.txt --miner.threads=1 --miner.etherbase  $2 --unlock $2 --snapshot=false --gcmode=archive --verbosity 4 2>&1 >~/data/geth.log &
 
 echo "start finish"
 #curl ifconfig.me 

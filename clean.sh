@@ -7,6 +7,6 @@ for ip in $(awk '{print $2}' ip_index.txt)
 do 
   echo ${index} ${ip} ${ids[$index]}
 
-  ssh -o StrictHostKeyChecking=no -i ${pem} ubuntu@${ip} "rm -rf ~/schnorrmpc/data/schnorrmpc && rm -rf ~/schnorrmpc/data/storeman"
+  ssh -o StrictHostKeyChecking=no -i ${pem} ubuntu@${ip} "rm -rf ~/bin && rm -rf ~/data"
   ((index++))
 done
