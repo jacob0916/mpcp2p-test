@@ -9,6 +9,8 @@ do
   ((index++))
 done
 
+addrs=$(cat ./addrs.txt)
+
 index=0
 for ip in $(cat ip.txt)
 do 
@@ -16,6 +18,8 @@ do
   ssh -o StrictHostKeyChecking=no -i ${pem} ubuntu@${ip} "mkdir -p ~/bin && mkdir -p ~/data/keystore"
 
   scp -o StrictHostKeyChecking=no -i ${pem} ./conf/nodekeys/n${ids[$index]} ubuntu@${ip}:~/data/nodekey
+  scp -o StrictHostKeyChecking=no -i ${pem} ./conf/keystore/${addrs[$index]} ubuntu@${ip}:~/data/keystore/${addrs[$index]}
+
   scp -o StrictHostKeyChecking=no -i ${pem} ./conf/pwd ubuntu@${ip}:~/data/pw.txt
   scp -o StrictHostKeyChecking=no -i ${pem} ./run.sh ubuntu@${ip}:~/bin/run.sh
 
