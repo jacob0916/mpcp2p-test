@@ -6,7 +6,8 @@ index=0
 for ip in $(cat ip.txt)
 do 
   echo ${index} ${ip}
-  echo "~/bin/run.sh ${ip} ${addrs[index]}"
-  ssh -o StrictHostKeyChecking=no -i ${pem} ubuntu@${ip} "~/bin/run.sh ${ip} ${addrs[index]}"
+  #echo "~/bin/run.sh ${ip} ${addrs[index]}"
+
+  ssh -o StrictHostKeyChecking=no -i ${pem} ubuntu@${ip} "nohup ~/bin/run.sh ${ip} ${addrs[index]} >~/bin/out.log 2>&1 &"
   ((index++))
 done
