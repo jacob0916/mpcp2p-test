@@ -3,7 +3,7 @@ pem=$(cat ./conf/pem.txt)
 addrs=($(cat ./addrs.txt))
 
 
-cd ~/wanchain/mpcp2p-test
+cd ~/jacob/mpcp2p-test
 
 index=0
 for ip in $(cat ip.txt)
