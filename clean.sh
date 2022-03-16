@@ -1,13 +1,37 @@
 #!/bin/bash
 pem=$(cat ./conf/pem.txt)
 
+addrs=($(cat ./addrs.txt))
+validBeginIndex=0
+validEndIndex=${#addrs[@]}
+
+echo "validBeginIndex=""${validBeginIndex}"
+echo "validEndIndex=""${validEndIndex}"
+
+
+if [ -n "$1" ]
+then
+        validBeginIndex=$1
+fi
+
+if [ -n "$2" ]
+then
+        validEndIndex=$2
+fi
+
+echo "validBeginIndex=""${validBeginIndex}"
+echo "validEndIndex=""${validEndIndex}"
+
 index=0
-#ids=($(awk '{print $1}' ip_index.txt))
-for ip in $(awk '{print $2}' ./conf/ip_index.txt)
+
+for ip in $(cat ip.txt)
 do 
   #echo ${index} ${ip} ${ids[$index]}
   echo ${index} ${ip} ${ids[$index]}
-
-  ssh -o StrictHostKeyChecking=no -i ${pem} ubuntu@${ip} "rm -rf ~/data/gwan"
+  if [ ${index} -ge ${validBeginIndex} -a ${index} -le ${validEndIndex} ]
+  then
+	echo "delete data"
+   	ssh -o StrictHostKeyChecking=no -i ${pem} ubuntu@${ip} "rm -rf ~/data/gwan"
+  fi
   ((index++))
 done
