@@ -29,7 +29,8 @@ do
   if [ ${index} -ge ${validBeginIndex} -a ${index} -le ${validEndIndex} ]
   then
 	echo "stop"
-  	ssh -o StrictHostKeyChecking=no -i ${pem} ubuntu@${ip} "pkill -9 geth && ps -ef|grep geth && pkill -9 gwan && ps -ef | grep gwan"
+  	ssh -o StrictHostKeyChecking=no -i ${pem} ubuntu@${ip} "pkill -9 geth && ps -ef|grep geth"
+  	ssh -o StrictHostKeyChecking=no -i ${pem} ubuntu@${ip} "pkill -9 gwan && ps -ef | grep gwan"
  fi 
 
   ((index++))
