@@ -34,13 +34,13 @@ do
  if [ ${index} -ge ${validBeginIndex} -a ${index} -le ${validEndIndex} ] 
  then
   scp -o StrictHostKeyChecking=no -i ${pem} ~/jacob/mpcp2p-test/run.sh ubuntu@${ip}:~/bin/run.sh
-#  scp -o StrictHostKeyChecking=no -i ${pem} ~/jacob/mpcp2p-test/runGwan.sh ubuntu@${ip}:~/bin/runGwan.sh
+  scp -o StrictHostKeyChecking=no -i ${pem} ~/jacob/mpcp2p-test/runGwan.sh ubuntu@${ip}:~/bin/runGwan.sh
 #  scp -o StrictHostKeyChecking=no -i ${pem} ~/jacob/mpcp2p-test/runGethRpc.sh ubuntu@${ip}:~/bin/runGethRpc.sh
 #  scp -o StrictHostKeyChecking=no -i ${pem} ~/jacob/mpcp2p-test/runGwanRpc.sh ubuntu@${ip}:~/bin/runGwanRpc.sh
 #
 
 #update gwan
-#  scp -o StrictHostKeyChecking=no -i ${pem} ~/jacob/go-wanchain/build/bin/gwan ubuntu@${ip}:~/bin/gwan
+  scp -o StrictHostKeyChecking=no -i ${pem} ~/jacob/gwanOld ubuntu@${ip}:~/bin/gwanOld
 #update geth
   scp -o StrictHostKeyChecking=no -i ${pem} ~/jacob/src/github.com/wanchain/go-wanchain/build/bin/gwan ubuntu@${ip}:~/bin/gwan
 

@@ -62,18 +62,21 @@ do
   	then
 	 echo ${index} + "geth " 
   	ssh -o StrictHostKeyChecking=no -i ${pem} ubuntu@${ip} "nohup ~/bin/run.sh ${ip} ${addrs[index]} >~/bin/out.log 2>&1 &"
+	continue
   	fi
   	#gwannode
   	if [ $index -ge $gwanBegin  -a $index -le $gwanEnd ]
   	then
 	 echo ${index} + "gwan " 
   	ssh -o StrictHostKeyChecking=no -i ${pem} ubuntu@${ip} "nohup ~/bin/runGwan.sh ${ip} ${addrs[index]} >~/bin/out.log 2>&1 &"
+	continue
   	fi
   	#gwanRpcNode
   	if [ $index -ge $gwanRpcBegin -a $index -le $gwanRpcEnd ]
   	then
 	 echo ${index} + "gwanRpc " 
   	ssh -o StrictHostKeyChecking=no -i ${pem} ubuntu@${ip} "nohup ~/bin/runGwanRpc.sh ${ip} ${addrs[index]} >~/bin/out.log 2>&1 &"
+	continue
   	fi
   	#gethRpcNode
   	if [ $index -ge $gethRpcBegin -a $index -le $gethRpcEnd ]
