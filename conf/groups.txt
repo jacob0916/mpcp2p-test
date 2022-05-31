@@ -1,3 +1,2 @@
-gwan 0 0
-geth 1 33
+geth 0 33
 gethRpc 34 34
